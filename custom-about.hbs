@@ -1,0 +1,16 @@
+{{!< default}}
+
+<img src="https://raw.githubusercontent.com/swilcox21/GhostFuze/master/Fuze/content/images/2022/07/about.png" />
+<img src="https://raw.githubusercontent.com/swilcox21/GhostFuze/master/Fuze/content/images/2022/07/how-we-work.png" />
+
+<div style="text-align:center; font-weight:bold; font-size:15px; letter-spacing:3px; color:red; margin-top:50px;">DIFFUSION LABS &amp; FRIENDS</div>
+        <h1 style="text-align:center; ">The team</h1>
+        <div class="member-feed">
+            {{!-- USE THE GET BELOW: if you need to change the order of the members--}}
+            {{#get "posts" include="tags" filter="tag:_team-member" order="published_at desc"}}
+                {{#foreach posts}}
+                    {{> "member-card"}}
+                {{/foreach}}
+            {{/get}}
+        </div>
+<img style="margin-bottom:50px;" src="https://raw.githubusercontent.com/swilcox21/GhostFuze/master/Fuze/content/images/2022/07/CSLabout.png" />

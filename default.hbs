@@ -32,20 +32,16 @@
                         {{@site.title}}
                     {{/if}}
                 </a>
-                <div class="gh-head-brand-wrapper">
-                    <button class="gh-search" data-ghost-search>{{> "icons/search"}}</button>
-                    <a class="gh-burger" role="button">
-                        <div class="gh-burger-box">
-                            <div class="gh-burger-inner"></div>
-                        </div>
-                    </a>
-                </div>
+                <a class="gh-burger" role="button">
+                    <div class="gh-burger-box">
+                        <div class="gh-burger-inner"></div>
+                    </div>
+                </a>
             </div>
             <div class="gh-head-menu">
                 {{navigation}}
             </div>
             <div class="gh-head-actions">
-                <button class="gh-search" data-ghost-search>{{> "icons/search"}}</button>
                 <div class="gh-social">
                     {{#if @site.facebook}}
                         <a class="gh-social-link gh-social-facebook" href="{{facebook_url @site.facebook}}" title="Facebook" target="_blank" rel="noopener">{{> "icons/facebook"}}</a>
@@ -68,16 +64,21 @@
     <div class="site-content">
         {{!-- All other templates get inserted here, index.hbs, post.hbs, etc --}}
         {{{body}}}
+
     </div>
 
     {{!-- The global footer at the very bottom of the screen --}}
     <footer class="site-footer outer">
         <div class="inner">
-            <section class="copyright"><a href="{{@site.url}}">{{@site.title}}</a> &copy; {{date format="YYYY"}}</section>
+            <section class="copyright"><a href="{{@site.url}}"><img src="http://localhost:2368/content/images/2022/07/Screen_Shot_2022-07-26_at_4.24.04_PM-removebg-preview.png " style="width:200px;"/></a></section>
+            <div style="color:black;">Custom Ghost Theme by Sam</div>
+            {{!-- <div></div> --}}
+            <div></div>
             <nav class="site-footer-nav">
-                {{navigation type="secondary"}}
+                <a href="/about/">Contact Diffusion Labs Team</a>
             </nav>
-            <div><a href="https://ghost.org/" target="_blank" rel="noopener">Powered by Ghost</a></div>
+            <div><a href="https://www.csl.com/" target="_blank" rel="noopener">CSL.com</a></div>
+            <div>CSL - All Rights Reserved &copy; 2022</div>
         </div>
     </footer>
 

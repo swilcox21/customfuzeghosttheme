@@ -1,0 +1,26 @@
+{{!< default}}
+
+{{!-- The tag above means: insert everything in this file
+into the {body} tag of the default.hbs template --}}
+
+<img src="https://raw.githubusercontent.com/swilcox21/GhostFuze/master/Fuze/content/images/2022/07/work.png" />
+<div class="projects-container">
+        <div style="text-align:center; font-weight:bold; font-size:15px; letter-spacing:3px; color:red; padding:5px;">OUR WORK</div>
+        <h1 style="text-align:center;">Projects</h1>
+        <div class="featured-project-feed inner posts">
+            {{#get "posts" include="tags" filter="tag:_project"}}
+            {{#foreach posts}}
+                {{#if featured}}
+                    {{> "project-card"}}
+                {{/if}}
+            {{/foreach}}
+        </div>
+        <div class="project-feed inner posts">
+            {{#foreach posts}}
+                {{^if featured}}
+                    {{> "project-card"}}
+                {{/if}}
+            {{/foreach}}
+            {{/get}}
+        </div>
+    </div>

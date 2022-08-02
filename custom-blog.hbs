@@ -1,0 +1,15 @@
+{{!< default}}
+
+<img src="https://raw.githubusercontent.com/swilcox21/GhostFuze/master/Fuze/content/images/2022/07/blog.png" />
+
+{{#get "posts" include="tags"}}
+<div class="" style="background-color: whitesmoke; padding-bottom:100px">
+    {{#foreach posts}}
+        {{^has tag="_project"}}
+        {{^has tag="_team-member"}}
+                {{> "post-card"}}
+        {{/has}}
+        {{/has}}
+    {{/foreach}}
+</div>
+{{/get}}
