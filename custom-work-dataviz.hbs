@@ -7,13 +7,15 @@ into the {body} tag of the default.hbs template --}}
 <div class="projects-container">
     {{!-- <div style="text-align:center; font-weight:bold; font-size:15px; letter-spacing:3px; color:red; padding:5px;">OUR WORK</div> --}}
     <h2 style="text-align:center; margin-bottom:20px; ">Projects</h2>
-    {{#get "posts" include="tags" filter="tag:_project"}}
-
-        {{!-- TAG BUTTONS --}}
-
+    {{#get "posts" include="tags" filter="tag:_project + tag:data-viz"}}
+        {{!-- {{#get "tags" filter="slug:prototype , slug:pie , slug:data-viz ,  slug:research ,  slug:design "}}
+            {{#foreach tags}}
+                <div>{{slug}}</div>
+            {{/foreach}}
+        {{/get}} --}}
         <div style="display:flex; justify-content:center">
             <a href="/work/">
-                <button style="background-color:red; color:white;" class="all-posts-button">ALL PROJECTS</button>
+                <button class="all-posts-button">ALL PROJECTS</button>
             </a>
             <a href="/work-prototype/">
                 <button class="all-posts-button">PROTOTYPE</button>
@@ -22,7 +24,7 @@ into the {body} tag of the default.hbs template --}}
                 <button class="all-posts-button">PIE</button>
             </a>
             <a href="/work-dataviz/">
-                <button class="all-posts-button">DATA VIZ</button>
+                <button style="background-color:red; color:white;" class="all-posts-button">DATA VIZ</button>
             </a>
             <a href="/work-research/">
                 <button class="all-posts-button">RESEARCH</button>
@@ -31,9 +33,6 @@ into the {body} tag of the default.hbs template --}}
                 <button class="all-posts-button">DESIGN</button>
             </a>
         </div>
-
-        {{!-- PROJECTS FEED --}}
-
         <div style="margin-top:-20px;" class="featured-project-feed inner posts">
             {{#foreach posts}}
                 {{#if featured}}

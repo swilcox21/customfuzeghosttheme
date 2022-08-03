@@ -1,0 +1,60 @@
+{{!< default}}
+
+<img src="https://raw.githubusercontent.com/swilcox21/GhostFuze/master/Fuze/content/images/2022/07/blog.png" />
+{{#get "posts" include="tags" filter="tag:-'_project'+tag:-'_team-member'"}}
+<div class="" style="background-color:whitesmoke; padding-left:15%; padding-right:15%;">
+            <button type="search" data-ghost-search style=" min-width:300px; padding-left:20px; text-align:start; color:gray; background-color:white; padding-right:20px; padding-top:12px; padding-bottom:12px;  border-radius:50px; border: 1px solid gray;">Search blog posts &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; ?</button>
+    {{#foreach posts}}
+        {{#has index="0"}}
+            <a href="{{url}}">
+                <div style="display:flex; margin-top:25px; justify-content:center;">
+                    <img 
+                        style="border-radius:10px 0px 0px 10px; width:65%; height:35%;"
+                        src="{{feature_image}}"
+                        alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}"
+                        loading="lazy"
+                    />
+                    <div style="background-color:white; border-radius:0px 10px 10px 0px; padding:20px; width:450px; display:flex; flex-direction:column; align-items:flex-start; justify-content:flex-end">
+                        <div style="margin:5px;">
+                            {{date published_at format="MMMM DD, YYYY"}}
+                        </div>
+                        <h2 style=" margin:5px; text-align:left; color:rgb(242, 0, 0); ">
+                            {{title}}
+                        </h2>
+                        {{#primary_tag}}
+                            <div style=" font-size:1.2rem; font-weight:700; letter-spacing:.5px; text-align:left; margin:5px;">{{name}}</div>
+                        {{/primary_tag}}
+                    </div>
+                </div>
+            </a>
+        {{/has}}
+    {{/foreach}}
+            <div class="" style="display:grid; gap: 4.8vmin 4vmin; grid-template-columns: repeat(3, 1fr); align-items:center; padding-top: 50px; padding-bottom:60px;">
+    {{#foreach posts}}
+            {{^has index="0"}}
+                <a href="{{url}}">
+                    <div style="height:350px;width:fit-content; background-color:white; border-radius:10px 10px 10px 10px; ">
+                        <img 
+                            style="border-radius:10px 10px 0px 0px; width: 400px; height:200px;"
+                            src="{{feature_image}}"
+                            alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}"
+                            loading="lazy"
+                        />
+                        <div style="margin:20px;">
+                            <div style="margin:5px;">
+                                    {{date published_at format="MMMM DD, YYYY"}}
+                                </div>
+                            <h4 style="max-width:290px; margin:5px; text-align:left; color:rgb(242, 0, 0);">
+                                {{title}}
+                            </h4>
+                            {{#primary_tag}}
+                                <div style=" font-size:1.6rem; letter-spacing:.5px; text-align:left; margin:5px;">{{name}}</div>
+                            {{/primary_tag}}
+                        </div>
+                    </div>
+                </a>
+                {{/has}}
+    {{/foreach}}
+            </div>
+</div>
+{{/get}}

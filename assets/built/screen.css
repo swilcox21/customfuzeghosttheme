@@ -1252,8 +1252,15 @@ body:not(.gh-head-open) .gh-burger:hover .gh-burger-inner:after {
   align-items: center;
 }
 
-  .blog-card-small {
+.blog-card-small {
     display:none;
+}
+.blog-card-blog {
+  display:contents;
+  /* text-align: center; */
+  justify-content: center;
+  align-items: center;
+  
 }
 
 @media (max-width: 991px) {
@@ -1269,9 +1276,10 @@ body:not(.gh-head-open) .gh-burger:hover .gh-burger-inner:after {
   }
 }
 .blog-card-small-inner {
-  background-color: rgb(245, 245, 245);
+  background-color: white;
   border-radius: 10px;
   text-align: center;
+  align-items: center;
   margin: auto;
   margin-bottom:10px;
 }
@@ -1363,11 +1371,11 @@ body:not(.gh-head-open) .gh-burger:hover .gh-burger-inner:after {
 }
 .featured-project-card-tags {
   display: flex;
-  align-items: center;
+  align-items:flex-start;
   gap: 12px;
   margin: 10px 0 10px;
   color: rgb(238, 0, 0);
-  font-size: 1.7rem;
+  font-size: 1.5rem;
   font-weight: 800;
   letter-spacing: .5px;
   line-height: 1;
@@ -1389,7 +1397,7 @@ body:not(.gh-head-open) .gh-burger:hover .gh-burger-inner:after {
 }
 .project-card-tags {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   gap: 12px;
   margin: 10px 0 10px;
   color: rgb(222, 0, 0);
@@ -1397,6 +1405,20 @@ body:not(.gh-head-open) .gh-burger:hover .gh-burger-inner:after {
   font-weight: 800;
   letter-spacing: .5px;
   line-height: 1.2rem;
+}
+.project-card-tags-small {
+  display: none;
+}
+@media (max-width: 767px) {
+  .project-card-tags-small  {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-top: -10px;
+    color: rgb(222, 0, 0);
+    font-size: 1rem;
+    font-weight: 600;
+}
 }
 @media (max-width: 991px) {
   .project-card-tags  {
@@ -1407,12 +1429,11 @@ body:not(.gh-head-open) .gh-burger:hover .gh-burger-inner:after {
 }
 @media (max-width: 767px) {
   .project-card-tags  {
-    font-size: .8rem;
-    line-height: .9rem;
-    letter-spacing:0; 
-    margin:0;
+    display: none;
 }
 }
+
+
 .post-card-tags {
   display: flex;
   align-items: center;
@@ -1546,6 +1567,7 @@ body:not(.gh-head-open) .gh-burger:hover .gh-burger-inner:after {
   flex-grow: 1;
   display: flex;
   flex-direction: row;
+  /* background-color: white; */
   /* align-items: center; */
 }
 .blog-card-content {
