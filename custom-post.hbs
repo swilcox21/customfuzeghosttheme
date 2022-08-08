@@ -1,0 +1,77 @@
+{{!< default}}
+
+{{!-- The tag above means: insert everything in this file
+into the {body} tag of the default.hbs template --}}
+
+{{#post}}
+        {{!-- <div style="height:15px;margin-left:15%; margin-top:435px; position:absolute; z-index:3; width:70%; border-radius:10px 10px 0px 0px;background:#FF9C55; background:linear-gradient(90deg, #FF9C55 0%, #F5444B 100%); "></div>
+        <div style="margin-left:15%; margin-top:450px; position:absolute; z-index:2; padding:50px; padding-left:8%;padding-right:8%;width:70%; background-color:white;">
+            <div style="margin-bottom:15px; color:gray;">{{date published_at format="MMMM DD, YYYY"}}</div>
+            <h1 style="text-align:center; margin-bottom:15px;">{{title}}</h1>
+            {{#primary_tag}}
+            <div style="margin-bottom:40px; color:gray;">{{name}}</div>
+            {{/primary_tag}}
+            <div style="border-bottom: 1px solid rgb(177, 177, 177); width:100%; margin-bottom:40px;"></div>
+            <div style="padding-bottom:5%;">{{content}}</div>
+        </div> --}}
+
+        {{!-- SHADOW DIV IN ORDER TO FLOAT THE POST ON TOP OF THE FEATURED IMAGE --}}
+        <div style="width:100%;background-color:#f7f3f2; padding-bottom:30px;">
+            <div class="custom-post-large-image">
+                <img 
+                    src="{{img_url feature_image}}"
+                    style="width:100%; height:750px; margin-top:-25vh;"
+                />
+            </div>
+            <div class="custom-post-small-image" >
+                <img 
+                    src="{{img_url feature_image}}"
+                    style="width:100%; height:650px;  margin-top:-28vh;"
+                />
+            </div>
+
+            <div class="custom-post-large">
+                <div style="height:15px;margin-top:-120px; margin-left:15%; position:relative; z-index:2; width:70%; border-radius:10px 10px 0px 0px;background:#FF9C55; background:linear-gradient(90deg, #FF9C55 0%, #F5444B 100%); "></div>
+                <div style="margin-left:15%;  position:relative; z-index:2; padding:50px; padding-left:8%;padding-right:8%;width:70%; background-color:white;">
+                    <div style="margin-bottom:15px; color:gray;">{{date published_at format="MMMM DD, YYYY"}}</div>
+                    <h1 style="text-align:center; margin-bottom:15px;">{{title}}</h1>
+                    {{#primary_tag}}
+                    <div style="margin-bottom:40px; color:gray;">{{name}}</div>
+                    {{/primary_tag}}
+                    <div style="padding-bottom:-15%;">{{content}}</div>
+                </div>
+            </div>
+
+            <div class="custom-post-small">
+                <div style="height:15px; margin-top:-180px; margin-left:5%; position:relative; z-index:2; width:90%; border-radius:10px 10px 0px 0px;background:#FF9C55; background:linear-gradient(90deg, #FF9C55 0%, #F5444B 100%); "></div>
+                <div style="margin-left:5%; position:relative; z-index:2; padding:50px; padding-left:8%;padding-right:8%;width:90%; background-color:white;">
+                    <div style="margin-bottom:15px; color:gray;">{{date published_at format="MMMM DD, YYYY"}}</div>
+                    <h1 style="text-align:center; margin-bottom:15px;">{{title}}</h1>
+                    {{#primary_tag}}
+                    <div style="margin-bottom:40px; color:gray;">{{name}}</div>
+                    {{/primary_tag}}
+                    <div style="padding-bottom:-15%;">{{content}}</div>
+                </div>
+            </div>
+
+            {{#if @custom.show_recent_posts_footer}}
+            {{!-- The {#get} helper below fetches some of the latest posts here
+            so that people have something else to read when they finish this one.
+
+            This query gets the latest 3 posts on the site, but adds a filter to
+            exclude the post we're currently on from being included. --}}
+                <div style="background-color:#f7f3f2; padding:40px; padding-left:100px; padding-right:100px;">
+                    {{#get "posts" include="tags" filter="id:-{{id}} + tag:-'_project' + tag:-'_team-member'" limit="3" as |more_posts| }}
+                        {{#if more_posts}}
+                            <h4 style="letter-spacing:2px; margin-left:40px; font-weight:800;"><a href="/work/">MORE FROM THE TEAM</a></h4>
+                            <div class="read-more ">
+                                {{#foreach more_posts}}
+                                    {{> "read-more-card"}}
+                                {{/foreach}}
+                            </div>
+                        {{/if}}
+                    {{/get}}
+                </div> 
+            {{/if}}
+        </div>
+{{/post}}

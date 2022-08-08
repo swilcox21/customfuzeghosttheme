@@ -3,11 +3,11 @@
 {{!-- The tag above means: insert everything in this file
 into the {body} tag of the default.hbs template --}}
 
-<img src="https://raw.githubusercontent.com/swilcox21/GhostFuze/master/Fuze/content/images/2022/07/work.png" />
+<img src="https://raw.githubusercontent.com/swilcox21/GhostFuze/master/Fuze/content/images/2022/08/work-header.png" />
 <div class="projects-container">
-    {{!-- <div style="text-align:center; font-weight:bold; font-size:15px; letter-spacing:3px; color:red; padding:5px;">OUR WORK</div> --}}
+    {{!-- <div style="text-align:center; font-weight:bold; font-size:15px; letter-spacing:3px; color:#E30F17; padding:5px;">OUR WORK</div> --}}
     <h2 style="text-align:center; margin-bottom:20px; ">Projects</h2>
-    {{#get "posts" include="tags" filter="tag:_project + tag:pie"}}
+    {{#get "posts" include="tags" filter="tag:_project + tag:pie"  order="published_at asc"}}
         {{!-- {{#get "tags" filter="slug:prototype , slug:pie , slug:data-viz ,  slug:research ,  slug:design "}}
             {{#foreach tags}}
                 <div>{{slug}}</div>
@@ -21,7 +21,7 @@ into the {body} tag of the default.hbs template --}}
                 <button class="all-posts-button">PROTOTYPE</button>
             </a>
             <a href="/work-pie/">
-                <button style="background-color:red; color:white;" class="all-posts-button">PIE</button>
+                <button style="background-color:#E30F17; color:white;" class="all-posts-button">PIE</button>
             </a>
             <a href="/work-dataviz/">
                 <button class="all-posts-button">DATA VIZ</button>
@@ -35,16 +35,19 @@ into the {body} tag of the default.hbs template --}}
         </div>
         <div style="margin-top:-20px;" class="featured-project-feed inner posts">
             {{#foreach posts}}
-                {{#if featured}}
+                {{#has index="0,1"}}
+                    {{> "featured-project-card"}}
+                {{/has}}
+                {{!-- {{#if featured}}
                     {{> "project-card"}}
-                {{/if}}
+                {{/if}} --}}
             {{/foreach}}
         </div>
         <div class="project-feed inner posts">
             {{#foreach posts}}
-                {{^if featured}}
+                {{^has index="0,1"}}
                     {{> "project-card"}}
-                {{/if}}
+                {{/has}}
             {{/foreach}}
         </div>
     {{/get}}
