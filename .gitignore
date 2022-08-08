@@ -1,28 +1,28 @@
-b-cov
-*.seed
-*.log
-*.csv
-*.dat
-*.out
-*.pid
-*.gz
+# b-cov
+# *.seed
+# *.log
+# *.csv
+# *.dat
+# *.out
+# *.pid
+# *.gz
 
-pids
-logs
-results
+# pids
+# logs
+# results
 
-npm-debug.log
-node_modules
-package-lock.json
+# npm-debug.log
+# node_modules
+# package-lock.json
 
-.idea/*
-*.iml
-projectFilesBackup
+# .idea/*
+# *.iml
+# projectFilesBackup
 
-.DS_Store
+# .DS_Store
 
-dist/
+# dist/
 
-config.json
-changelog.md
-changelog.md.bk
+# config.json
+# changelog.md
+# changelog.md.bk
