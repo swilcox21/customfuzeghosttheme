@@ -53,7 +53,9 @@ into the {body} of the default.hbs template --}}
         <div class="project-feed inner posts">
             {{#get "posts" include="tags" filter="featured:false+tag:'_project'" order="published_at asc" limit=3}}
                 {{#foreach posts}}
-                    {{> "project-card"}}
+                    {{!-- {{^has index="0,1"}} --}}
+                        {{> "project-card"}}
+                    {{!-- {{/has}} --}}
                 {{/foreach}}
             {{/get}}
         </div>

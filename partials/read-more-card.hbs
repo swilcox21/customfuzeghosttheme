@@ -3,39 +3,18 @@ which templates loop over to generate a list of posts. --}}
 
 <article style="background-color:white; border-radius:10px;" class="post-card {{post_class}}{{#match @custom.feed_layout "Grid"}}{{#is "home"}}{{#has index="0"}} post-card-large{{/has}}{{#has index="1,2"}} dynamic{{/has}}{{/is}}{{/match}}{{#match @custom.feed_layout "Grid"}} keep-ratio{{/match}}{{#match @custom.feed_layout "Grid"}}{{#is "home, paged"}} post-card-large{{/is}}{{/match}}{{#unless access}} post-access-{{visibility}}{{/unless}}">
 
-        {{!-- <a href="{{url}}">
-            <div style="height:350px;width:fit-content; background-color:white; border-radius:10px 10px 0px 0px; ">
-                <img 
-                    style="border-radius:10px 10px 0px 0px; width: 400px; height:200px;"
-                    src="{{feature_image}}"
-                    alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}"
-                    loading="lazy"
-                />
-                <div style="margin:20px;">
-                    <div style="margin:5px;">
-                        {{date published_at format="MMMM DD, YYYY"}}
-                    </div>
-                    <h4 style="max-width:290px; margin:5px; text-align:left; color:rgb(242, 0, 0);">
-                        {{title}}
-                    </h4>
-                    {{#primary_tag}}
-                        <div style=" font-size:1.6rem; letter-spacing:.5px; text-align:left; margin:5px;">{{name}}</div>
-                    {{/primary_tag}}
-                </div>
-            </div>
-        </a> --}}
-
-
     {{#if feature_image}}
     <a href="{{url}}">
         {{!-- This is a responsive image, it loads different sizes depending on device
         https://medium.freecodecamp.org/a-guide-to-responsive-images-with-ready-to-use-templates-c400bd65c433 --}}
-         <img 
-            style="border-radius:10px 10px 0px 0px; width: 460px; height:230px;"
-            src="{{feature_image}}"
-            alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}"
-            loading="lazy"
-        />
+        <div style="border-radius:10px 10px 0px 0px; width: 100%; height:230px; overflow:hidden;">
+            <img 
+                style="width:100%; height:230px; transform:scale(1.5)"
+                src="{{feature_image}}"
+                alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}"
+                loading="lazy"
+            />
+        </div>
     {{/if}}
     <div style="margin:20px; ">
         <div style="margin-top:5px;">
@@ -49,45 +28,5 @@ which templates loop over to generate a list of posts. --}}
         {{/primary_tag}}
     </div>
     </a>
-    {{!-- <div class="post-card-content">
-        <br/>
-        <a class="post-card-content-link" href="{{url}}">
-            <header class="post-card-header">
-            {{#if featured}}
-                {{date published_at format="MMMM DD, YYYY"}}
-                <div class="featured-project-card-title">
-                    {{#unless access}}
-                    {{^has visibility="public"}}
-                        {{#unless feature_image}}
-                            {{> "icons/lock"}}
-                        {{/unless}}
-                    {{/has}}
-                    {{/unless}}
-                    {{title}}
-                </div>
-                <div class="featured-project-card-tags">
-                    {{#primary_tag}}
-                        <span class="post-card-primary-tag">{{name}}</span>
-                    {{/primary_tag}}
-                </div>
-            {{else}}
-                <div class="project-card-title">
-                    {{#unless access}}
-                    {{^has visibility="public"}}
-                        {{#unless feature_image}}
-                            {{> "icons/lock"}}
-                        {{/unless}}
-                    {{/has}}
-                    {{/unless}}
-                    {{title}}
-                </div>
-                <div class="project-card-tags">
-                    {{#primary_tag}}
-                        <span class="post-card-primary-tag">{{name}}</span>
-                    {{/primary_tag}}
-                </div>
-            {{/if}}
-            </header>
-        </a>
-    </div> --}}
+  
 </article>
