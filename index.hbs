@@ -56,16 +56,16 @@ into the {body} of the default.hbs template --}}
         </div>
         <h1 style="text-align:center;">Projects</h1>
         <div class="featured-project-feed inner posts">
-            {{#get "pages" include="tags" filter="featured:true+tag:'hash-project'" order="published_at asc" limit=2}}
-                {{#foreach pages}}
+            {{#get "posts" include="tags" filter="featured:true+tag:'hash-project'" order="published_at asc" limit=2}}
+                {{#foreach posts}}
                     {{log this}}
                     {{> "project-card"}}
                 {{/foreach}}
             {{/get}}
         </div>
         <div class="project-feed inner posts">
-            {{#get "pages" include="tags" filter="featured:false+tag:'_project'" order="published_at asc" limit=3}}
-                {{#foreach pages}}
+            {{#get "posts" include="tags" filter="featured:false+tag:'_project'" order="published_at asc" limit=3}}
+                {{#foreach posts}}
                     {{> "project-card"}}
                 {{/foreach}}
             {{/get}}
