@@ -22,9 +22,9 @@
             </form>
             <section style="position:absolute; z-index:3; margin-left:15px; border-radius:10px; max-width:390px; max-height:40vh; overflow-y:scroll; background-color:rgba(255, 255, 255, 0.95);" class="gh-search-results" id="ghost-hunter-search-results"></section>
         </div>
-        <button type="search" data-ghost-search style="margin-top:50px; padding-left:20px; text-align:start; color:rgb(65, 65, 65); background-color:white; padding-right:20px; padding-top:10px; padding-bottom:10px;  border-radius:50px; border: 1px solid black;">
+        {{!-- <button type="search" data-ghost-search style="margin-top:50px; padding-left:20px; text-align:start; color:rgb(65, 65, 65); background-color:white; padding-right:20px; padding-top:10px; padding-bottom:10px;  border-radius:50px; border: 1px solid black;">
             Search blog posts &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp; <i class="fa fa-search" aria-hidden="true"></i>
-        </button>
+        </button> --}}
         {{#foreach posts}}
             {{#has index="0"}}
                 <a href="{{url}}">

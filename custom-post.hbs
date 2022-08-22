@@ -23,9 +23,6 @@ into the {body} tag of the default.hbs template --}}
                 <div style=" position:relative; z-index:2; width:100%;margin:auto;padding:50px; padding-left:8%;padding-right:8%; background-color:white;">
                     <div style="margin-bottom:15px; color:#515151; font-size:14px;">{{date published_at format="MMMM DD, YYYY"}}</div>
                     <h1 style="margin-bottom:15px; font-size:42px;">{{title}}</h1>
-                    {{#primary_tag}}
-                    <div style="margin-bottom:40px; color:#515151; font-size:16px;">{{name}}</div>
-                    {{/primary_tag}}
                     {{#primary_author}}
                     <div style="margin-bottom:40px; color:#515151; font-size:16px;">{{name}}</div>
                     {{/primary_author}}
@@ -33,7 +30,6 @@ into the {body} tag of the default.hbs template --}}
                     <div style="padding-bottom:-15%;">{{content}}</div>
                     <div style="width:100%; margin-top:35px; margin-bottom:35px; border-bottom:1px solid #E3E3E3;"></div>
                     <div>
-                            {{log primary_author}}
                         {{#primary_author}}
                         <div style="display:flex;">
                             <img src="{{profile_image}}" style="border-radius:50%; width:124px; margin:5px;"/>

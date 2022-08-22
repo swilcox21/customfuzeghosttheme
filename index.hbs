@@ -58,7 +58,6 @@ into the {body} of the default.hbs template --}}
         <div class="featured-project-feed inner posts">
             {{#get "posts" include="tags" filter="featured:true+tag:'hash-project'" order="published_at asc" limit=2}}
                 {{#foreach posts}}
-                    {{log this}}
                     {{> "project-card"}}
                 {{/foreach}}
             {{/get}}
