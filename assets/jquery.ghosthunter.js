@@ -3229,7 +3229,7 @@ lunr.QueryParser.parseBoost = function (parser) {
 		// console.log('ghostHunter: grabAndIndex');
 		this.blogData = {};
 		this.latestPost = 0;
-		var ghost_root = ghost_root_url || "/ghost/api/v2";
+		var ghost_root = ghost_root_url || "https://difflabs-dev-ghost.cslg1.cslg.net/ghost/api/v2";
             	var url = ghost_root + "/content/posts/?key=" + ghosthunter_key + "&limit=all&include=tags";
 
 		var params = {
@@ -3387,7 +3387,7 @@ lunr.QueryParser.parseBoost = function (parser) {
 					filter: "updated_at:>\'" + this.latestPost.replace(/\..*/, "").replace(/T/, " ") + "\'",
 					fields: "id"
 				};
-	var ghost_root = ghost_root_url || "/ghost/api/v2";
+	var ghost_root = ghost_root_url || "https://difflabs-dev-ghost.cslg1.cslg.net/ghost/api/v2";
         var url = ghost_root + "/content/posts/?key=" + ghosthunter_key + "&limit=all&fields=id" + "&filter=" + "updated_at:>\'" + this.latestPost.replace(/\..*/, "").replace(/T/, " ") + "\'";
 
 				var me = this;
