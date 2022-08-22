@@ -3,15 +3,23 @@
 {{!-- The tag above means: insert everything in this file
 into the {body} tag of the default.hbs template --}}
 
-<img src="https://raw.githubusercontent.com/swilcox21/GhostFuze/master/Fuze/content/images/2022/08/work-header.png" />
+<div class="work-background"></div>
 <div class="work-container">
-    {{!-- <div style="text-align:center; font-weight:bold; font-size:15px; letter-spacing:3px; color:#E30F17; padding:5px;">OUR WORK</div> --}}
+    <div style="display:flex; justify-content:space-around; margin:auto; ">
+        {{#post}}
+            <div style="margin-top:150px; margin-left:10%;">
+                <h1 class="work-title">{{title}}</h1>
+                <div class="work-content" >{{content}}</div>
+            </div>
+            <img class="work-image" src="{{feature_image}}" />
+        {{/post}}
+    </div>
     <h2 style="text-align:center; margin-bottom:20px; ">Projects</h2>
     {{#get "posts" include="tags" filter="tag:_project" order="published_at asc"}}
 
         {{!-- TAG BUTTONS --}}
 
-        <div style="display:flex; justify-content:center">
+        <div class="tag-buttons" >
             <a href="/work/">
                 <button style="background-color:#E30F17; color:white;" class="all-posts-button">ALL PROJECTS</button>
             </a>
@@ -31,22 +39,44 @@ into the {body} tag of the default.hbs template --}}
                 <button class="all-posts-button">DESIGN</button>
             </a>
         </div>
+        <div class="tag-buttons-small" >
+            <a href="/work/">
+                <button style="background-color:#E30F17; color:white;" class="all-posts-button">ALL PROJECTS</button>
+            </a>
+            <a href="/work-prototype/">
+                <button class="all-posts-button">PROTOTYPE</button>
+            </a>
+            <a href="/work-pie/">
+                <button class="all-posts-button">PIE</button>
+            </a>
+        </div>
+        <div class="tag-buttons-small" >
+            <a href="/work-dataviz/">
+                <button class="all-posts-button">DATA VIZ</button>
+            </a>
+            <a href="/work-research/">
+                <button class="all-posts-button">RESEARCH</button>
+            </a>
+            <a href="/work-design/">
+                <button class="all-posts-button">DESIGN</button>
+            </a>
+        </div>
 
         {{!-- PROJECTS FEED --}}
 
         <div style="margin-top:-20px;" class="featured-project-feed inner posts">
-                {{#foreach posts}}
-                    {{#has index="0,1"}}
-                        {{> "featured-project-card"}}
-                    {{/has}}
-                {{/foreach}}
+            {{#foreach posts}}
+                {{#has index="0,1"}}
+                    {{> "featured-project-card"}}
+                {{/has}}
+            {{/foreach}}
         </div>
         <div class="project-feed inner posts">
-                {{#foreach posts}}
+            {{#foreach posts}}
                 {{^has index="0,1"}}
                     {{> "project-card"}}
                 {{/has}}
-                {{/foreach}}
+            {{/foreach}}
         </div>
     {{/get}}
 </div>

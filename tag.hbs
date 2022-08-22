@@ -1,7 +1,7 @@
 {{!< default}}
 {{!-- The tag above means - insert everything in this file into the {body} of the default.hbs template --}}
 
-<main id="site-main" class="site-main outer">
+<main id="site-main" class="site-main outer" style="background-color:#f7f3f2; margin-top:-40px;">
 <div class="inner posts">
     <div class="post-feed">
 
@@ -42,11 +42,11 @@
         </section>
         {{/tag}}
 
-        {{#foreach posts}}
-            {{!-- The tag below includes the markup for each post - partials/post-card.hbs --}}
-            {{> "post-card"}}
-        {{/foreach}}
-
     </div>
+        <div class="blog-page-card-grid">
+            {{#foreach posts}}
+                {{> "read-more-card"}}
+            {{/foreach}}
+        </div>
 </div>
 </main>

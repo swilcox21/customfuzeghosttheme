@@ -22,7 +22,11 @@
 <body class="{{body_class}}{{#match @custom.title_font "=" "Elegant serif"}} has-serif-title{{/match}}{{#match @custom.body_font "=" "Modern sans-serif"}} has-sans-body{{/match}}{{#if @custom.show_publication_cover}} has-cover{{/if}}{{#is "home"}}{{#unless @custom.show_logo_in_navigation}} no-logo{{/unless}}{{/is}}">
 <div class="viewport">
 
-    <header id="gh-head" class="gh-head outer">
+    {{#is "home"}}
+        <header id="gh-head-home" class="gh-head outer">
+    {{else}}
+        <header id="gh-head" class="gh-head outer">
+    {{/is}}
         <nav class="gh-head-inner inner">
             <div class="gh-head-brand">
                 <a class="gh-head-logo{{#unless @site.logo}} no-image{{/unless}}" href="{{@site.url}}">
@@ -36,18 +40,19 @@
                         {{@site.title}}
                     {{/if}}
                 </a>
-                <a class="gh-burger" role="button">
-                    <div class="gh-burger-box">
+                <a class="gh-burger{{#is "home"}} gh-burger-home {{/is}}" role="button">
+                    <div class="gh-burger-box ">
                         <div class="gh-burger-inner"></div>
+                        {{!-- {{#is "home"}}gh-burger-home{{/is}} --}}
                     </div>
                 </a>
             </div>
             {{#is "home"}}
-            <div class="gh-head-menu-home">
+            <div class="gh-head-menu-home {{#is "home"}}nav-home{{/is}}">
                 {{navigation}}
             </div>
             {{else}}
-            <div class="gh-head-menu">
+            <div class="gh-head-menu nav-item">
                 {{navigation}}
             </div>
             {{/is}}
@@ -101,6 +106,13 @@
     src="https://code.jquery.com/jquery-3.5.1.min.js"
     integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
     crossorigin="anonymous">
+</script>
+<script type="text/javascript" src="{{asset "jquery.ghosthunter.js"}}"></script>
+<script>
+    $("#ghost-hunter-search-input").ghostHunter({
+        results: "#ghost-hunter-search-results",
+        onKeyUp: true,
+    });
 </script>
 <script src="{{asset "built/casper.js"}}"></script>
 <script>

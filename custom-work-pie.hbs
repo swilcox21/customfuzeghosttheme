@@ -3,16 +3,20 @@
 {{!-- The tag above means: insert everything in this file
 into the {body} tag of the default.hbs template --}}
 
-<img src="https://raw.githubusercontent.com/swilcox21/GhostFuze/master/Fuze/content/images/2022/08/work-header.png" />
-<div class="projects-container">
-    {{!-- <div style="text-align:center; font-weight:bold; font-size:15px; letter-spacing:3px; color:#E30F17; padding:5px;">OUR WORK</div> --}}
+<div class="work-background"></div>
+<div class="work-container">
+    <div style="display:flex; justify-content:space-around; margin:auto; ">
+        {{#post}}
+            <div style="margin-top:150px; margin-left:10%;">
+                <h1 class="work-title">{{title}}</h1>
+                <div class="work-content" >{{content}}</div>
+            </div>
+            <img class="work-image" src="{{feature_image}}" />
+        {{/post}}
+    </div>
     <h2 style="text-align:center; margin-bottom:20px; ">Projects</h2>
     {{#get "posts" include="tags" filter="tag:_project + tag:pie"  order="published_at asc"}}
-        {{!-- {{#get "tags" filter="slug:prototype , slug:pie , slug:data-viz ,  slug:research ,  slug:design "}}
-            {{#foreach tags}}
-                <div>{{slug}}</div>
-            {{/foreach}}
-        {{/get}} --}}
+
         <div style="display:flex; justify-content:center">
             <a href="/work/">
                 <button class="all-posts-button">ALL PROJECTS</button>

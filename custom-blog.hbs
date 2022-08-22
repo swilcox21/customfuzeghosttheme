@@ -1,188 +1,71 @@
 {{!< default}}
 
-<img src="https://raw.githubusercontent.com/swilcox21/GhostFuze/master/Fuze/content/images/2022/07/blog.png" />
+{{#post}}
+    <div class="blog-page-header">
+        <div style="width:100%; display:flex; flex-direction:column; justify-content:center;">
+            <h1 class="blog-page-header-title">{{title}}</h1>
+            <div id="blog-page-header-content">{{content}}</div>
+        </div>
+        <img class="blog-page-header-image"src="{{feature_image}}" />
+    </div>    
+{{/post}}
 {{#get "posts" include="tags" filter="tag:-'_project'+tag:-'_team-member'"}}
-<div class="custom-allposts-large" style="background-color:#f7f3f2; padding-left:15%; padding-right:15%;">
-    <button type="search" data-ghost-search style=" padding-left:20px; text-align:start; color:rgb(65, 65, 65); background-color:white; padding-right:20px; padding-top:10px; padding-bottom:10px;  border-radius:50px; border: 1px solid black;">
-        Search blog posts &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp; <i class="fa fa-search" aria-hidden="true"></i>
-    </button>
-    {{#foreach posts}}
-        {{#has index="0"}}
-            <a href="{{url}}">
-                <div style="display:flex; margin-top:25px; justify-content:center;">
-                    <div style="width:65%; height:35%; border-radius:10px 0px 0px 10px; overflow:hidden;"> 
-                        <img 
-                            style="width:100%; height:100%; transform:scale(1.5);"
-                            src="{{feature_image}}"
-                            alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}"
-                            loading="lazy"
-                        />
-                    </div>
-                    <div style="background-color:white; border-radius:0px 10px 10px 0px; padding:20px; width:450px; display:flex; flex-direction:column; align-items:flex-start; justify-content:flex-end">
-                        <div style="margin:5px; font-size:1.5rem">
-                            {{date published_at format="MMMM DD, YYYY"}}
+<div class="blog-page" style="background-color:#f7f3f2;">
+    <div class="blog-page-inner">
+        <div class="ghost-hunter-search">
+            <form >
+                <input
+                    id="ghost-hunter-search-input" 
+                    class="gh-search-bar blog-page-search" 
+                    type="search" 
+                    placeholder="Type to search" />
+            </form>
+            <section style="position:absolute; z-index:3; margin-left:15px; border-radius:10px; max-width:390px; max-height:40vh; overflow-y:scroll; background-color:rgba(255, 255, 255, 0.95);" class="gh-search-results" id="ghost-hunter-search-results"></section>
+        </div>
+        <button type="search" data-ghost-search style="margin-top:50px; padding-left:20px; text-align:start; color:rgb(65, 65, 65); background-color:white; padding-right:20px; padding-top:10px; padding-bottom:10px;  border-radius:50px; border: 1px solid black;">
+            Search blog posts &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp; <i class="fa fa-search" aria-hidden="true"></i>
+        </button>
+        {{#foreach posts}}
+            {{#has index="0"}}
+                <a href="{{url}}">
+                    <div class="blog-page-card-primary">
+                        <div style="width:60%; 
+                                    background-image:url('{{feature_image}}');
+                                    background-size:cover;
+                                    background-repeat:no-repeat;
+                                    background-position:center; 
+                                    border-radius:10px 0px 0px 10px; 
+                                    overflow:hidden;">
                         </div>
-                        <h2 style=" margin:5px; text-align:left; color:#E30F17; ">
-                            {{title}}
-                        </h2>
-                        {{#primary_tag}}
-                            <div style=" font-size:1.6rem; color:black; text-align:left; margin:5px;">{{name}}</div>
-                        {{/primary_tag}}
-                    </div>
-                </div>
-            </a>
-        {{/has}}
-    {{/foreach}}
-    <div class="" style="display:grid; gap: 4.8vmin 4vmin; grid-template-columns: repeat(3, 1fr); align-items:center; padding-top: 50px; padding-bottom:60px;">
-    {{#foreach posts}}
-        {{^has index="0"}}
-            <a href="{{url}}">
-                <div style="height:400px;width:100%; background-color:white; border-radius:10px 10px 10px 10px; ">
-                    <div style="border-radius:10px 10px 0px 0px; width:100%; height:60%; overflow:hidden;"> 
-                        <img 
-                            style="width: 100%; height:100%; transform:scale(1.5)"
-                            src="{{feature_image}}"
-                            alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}"
-                            loading="lazy"
-                        />
-                    </div>
-                    <div style="margin:20px;">
-                        <div style="margin:5px; font-size:1.5rem">
+                        <div style="background-color:white; 
+                                    border-radius:0px 10px 10px 0px; 
+                                    padding:2%; 
+                                    width:40%; 
+                                    display:flex; 
+                                    flex-direction:column; 
+                                    align-items:flex-start; 
+                                    justify-content:flex-end">
+                            <div class="blog-page-card-primary-pubDate">
                                 {{date published_at format="MMMM DD, YYYY"}}
                             </div>
-                        <h4 style="max-width:290px; margin:5px; text-align:left; color:#E30F17;">
-                            {{title}}
-                        </h4>
-                        {{#primary_tag}}
-                            <div style=" font-size:1.6rem; text-align:left; margin:5px;">{{name}}</div>
-                        {{/primary_tag}}
-                    </div>
-                </div>
-            </a>
-            {{/has}}
-    {{/foreach}}
-    </div>
-</div>
-{{/get}}
-{{#get "posts" include="tags" filter="tag:-'_project'+tag:-'_team-member'"}}
-<div class="custom-allposts-medium" style="background-color:#f7f3f2; padding-left:15%; padding-right:15%;">
-    <button type="search" data-ghost-search style=" padding-left:20px; text-align:start; color:rgb(65, 65, 65); background-color:white; padding-right:20px; padding-top:9px; padding-bottom:9px;  border-radius:50px; border: 1px solid black;">Search blog posts &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;   &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp; <i class="fa fa-search" aria-hidden="true"></i></button>
-    {{#foreach posts}}
-        {{#has index="0"}}
-            <a href="{{url}}">
-                <div style="display:flex; margin-top:25px; justify-content:center;">
-                    <div style="width:450px; height:35%; border-radius:10px 0px 0px 10px; overflow:hidden;"> 
-                        <img 
-                            style="width:100%; height:100%; transform:scale(1.5); "
-                            src="{{feature_image}}"
-                            alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}"
-                            loading="lazy"
-                        />
-                    </div>
-                    <div style="background-color:white; border-radius:0px 10px 10px 0px; padding:20px; min-width:250px; display:flex; flex-direction:column; align-items:flex-start; justify-content:flex-end">
-                        <div style="margin-left:5px;">
-                            {{date published_at format="MMMM DD, YYYY"}}
+                            <h2 class="blog-page-card-primary-title">
+                                {{title}}
+                            </h2>
+                            {{#primary_tag}}
+                                <div class="blog-page-card-primary-author">{{name}}</div>
+                            {{/primary_tag}}
                         </div>
-                        <h3 style="margin:0; margin-left:5px; text-align:left; color:#E30F17; ">
-                            {{title}}
-                        </h3>
-                        {{#primary_tag}}
-                            <div style="margin-left:5px; font-size:1.5rem; letter-spacing:.5px; text-align:left;">{{name}}</div>
-                        {{/primary_tag}}
                     </div>
-                </div>
-            </a>
-        {{/has}}
-    {{/foreach}}
-    <div class="" style="display:grid; margin:auto; justify-content:center; gap: 4vmin 2vmin; grid-template-columns: repeat(3, 1fr); align-items:center; padding-top: 50px; padding-bottom:60px;">
-    {{#foreach posts}}
-        {{^has index="0"}}
-            <a href="{{url}}">
-                <div style="height:280px;width:fit-content; background-color:white; border-radius:10px 10px 10px 10px; ">
-                    <div style="border-radius:10px 10px 0px 0px; width: 100%; height:150px; overflow:hidden;">
-                        <img 
-                            style="width:100%; height:100%; transform:scale(1.5); "
-                            src="{{feature_image}}"
-                            alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}"
-                            loading="lazy"
-                        />
-                    </div>
-                    <div style="margin:10px; margin-bottom:5px;">
-                        <div style="margin:5px; font-size:1.2rem; ">
-                                {{date published_at format="MMMM DD, YYYY"}}
-                            </div>
-                        <h5 style="margin:5px; font-size:1.5rem; text-align:left; color:#E30F17;">
-                            {{title}}
-                        </h5>
-                        {{#primary_tag}}
-                            <div style=" font-size:1.2rem; letter-spacing:.5px; text-align:left; margin:5px;">{{name}}</div>
-                        {{/primary_tag}}
-                    </div>
-                </div>
-            </a>
+                </a>
             {{/has}}
-    {{/foreach}}
-    </div>
-</div>
-{{/get}}
-{{#get "posts" include="tags" filter="tag:-'_project'+tag:-'_team-member'"}}
-<div class="custom-allposts-small" style="background-color:#f7f3f2; padding-left:5%; padding-right:5%;">
-    <button type="search" data-ghost-search style="margin-left:20px; width:fit-content; padding-left:20px; text-align:start; color:rgb(65, 65, 65); background-color:white; padding-right:20px; padding-top:8px; padding-bottom:8px;  border-radius:50px; border: 1px solid black;">Search blog posts &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp;  &nbsp; <i class="fa fa-search" aria-hidden="true"></i></button>
-    {{#foreach posts}}
-        {{#has index="0"}}
-            <a href="{{url}}">
-                <div style="display:flex; margin-top:25px; justify-content:center;">
-                    <div style="border-radius:10px 0px 0px 10px; width: 60%; height:45%; overflow:hidden;">
-                        <img 
-                            style="width:100%; height:100%; transform:scale(1.5);"
-                            src="{{feature_image}}"
-                            alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}"
-                            loading="lazy"
-                        />
-                        </div>
-                    <div style="background-color:white; border-radius:0px 10px 10px 0px; padding:10px; width:200px; display:flex; flex-direction:column; align-items:flex-start; justify-content:flex-end">
-                        <div style="margin-left:2px; font-size:1rem;">
-                            {{date published_at format="MMMM DD, YYYY"}}
-                        </div>
-                        <h5 style="font-size:1.5rem; margin:0; margin-left:2px; text-align:left; color:#E30F17; ">
-                            {{title}}
-                        </h5>
-                        {{#primary_tag}}
-                            <div style="margin-left:2px; font-size:1rem; font-weight:500; letter-spacing:.5px; text-align:left;">{{name}}</div>
-                        {{/primary_tag}}
-                    </div>
-                </div>
-            </a>
-        {{/has}}
-    {{/foreach}}
-    <div class="" style="display:grid; margin:auto; gap: 4vmin 3vmin; grid-template-columns: repeat(2, 1fr); justify-content:center; align-items:center; padding-top: 50px; padding-bottom:60px;">
-    {{#foreach posts}}
-        {{^has index="0"}}
-            <a href="{{url}}">
-                <div style="height:210px; max-width:200px; background-color:white; border-radius:10px 10px 10px 10px; ">
-                    <div style="border-radius:10px 10px 0px 0px; width: 100%; height:60%; overflow:hidden;">
-                        <img 
-                            style=" width: 100%; height:100%; transform:scale(1.5)"
-                            src="{{feature_image}}"
-                            alt="{{#if feature_image_alt}}{{feature_image_alt}}{{else}}{{title}}{{/if}}"
-                            loading="lazy"
-                        />
-                    </div>
-                    <div style="margin:3px;">
-                        <div style=" font-size:1rem; ">
-                                {{date published_at format="MMMM DD, YYYY"}}
-                            </div>
-                        <h5 style="margin:0;font-size:1.2rem; text-align:left; color:#E30F17;">
-                            {{title}}
-                        </h5>
-                        {{#primary_tag}}
-                            <div style=" font-size:1rem;  text-align:left; margin:0;">{{name}}</div>
-                        {{/primary_tag}}
-                    </div>
-                </div>
-            </a>
+        {{/foreach}}
+        <div class="blog-page-card-grid">
+        {{#foreach posts}}
+            {{^has index="0"}}
+                {{> "read-more-card"}}
             {{/has}}
-    {{/foreach}}
+        {{/foreach}}
+        </div>
     </div>
 </div>
 {{/get}}
