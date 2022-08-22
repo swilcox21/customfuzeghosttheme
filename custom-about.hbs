@@ -8,7 +8,7 @@
         <div class="member-feed">
             {{!-- USE THE GET BELOW: if you need to change the order of the members--}}
             {{#get "posts" include="tags" filter="tag:_team-member" order="published_at desc"}}
-                <div style="display:none">{{shuffle posts}}</div>
+                {{!-- <div style="display:none">{{shuffle posts}}</div> --}}
                 {{#foreach posts}}
                     {{> "member-card"}}
                 {{/foreach}}
