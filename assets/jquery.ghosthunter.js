@@ -3165,7 +3165,7 @@ lunr.QueryParser.parseBoost = function (parser) {
 		resultsData			: false,
 		onPageLoad			: false,
 		onKeyUp				: false,
-		result_template 	: "<a id='gh-{{ref}}' class='gh-search-item'  href='{{link}}'><div style='margin:10px;'><h4>{{title}}</h4><div>{{pubDate}}</div></div></a>",
+		result_template 	: "<a id='gh-{{ref}}' class='gh-search-item'  href='{{link}}'><div style='margin:10px;'><h4>{{title}}</h4><div>{{description}}</div><small>{{pubDate}}</small></div></a>",
 		info_template		: "<div style='display:none'>Number of posts found: {{amount}}</div>",
 		displaySearchInfo	: true,
 		zeroResultsInfo		: true,
@@ -3226,11 +3226,10 @@ lunr.QueryParser.parseBoost = function (parser) {
 	}
 
 	var grabAndIndex = function(){
-		// console.log('ghostHunter: grabAndIndex');
+		console.log(this.blogData);
 		this.blogData = {};
 		this.latestPost = 0;
-        var ghost_root_url = "https://difflabs-dev-ghost.cslg1.cslg.net";
-        var ghost_root = ghost_root_url || "/ghost/api/v2";
+		var ghost_root = ghost_root_url || "/ghost/api/v2";
             	var url = ghost_root + "/content/posts/?key=" + ghosthunter_key + "&limit=all&include=tags";
 
 		var params = {
@@ -3257,7 +3256,7 @@ lunr.QueryParser.parseBoost = function (parser) {
 				this.field('pubDate');
 				this.field('tag');
 				idxSrc.forEach(function (arrayItem) {
-					// console.log("start indexing an item: " + arrayItem.id);
+					// console.log("start indexing an item: " + arrayItem);
 					// Track the latest value of updated_at,  to stash in localStorage
 					var itemDate = new Date(arrayItem.updated_at).getTime();
 					var recordedDate = new Date(me.latestPost).getTime();
@@ -3265,7 +3264,7 @@ lunr.QueryParser.parseBoost = function (parser) {
 						me.latestPost = arrayItem.updated_at;
 					}
 					var tag_arr = arrayItem.tags.map(function(v) {
-						return v.name; // `tag` object has an `name` property which is the value of tag. If you also want other info, check API and get that property
+              return v.name; // `tag` object has an `name` property which is the value of tag. If you also want other info, check API and get that property
 					})
 					if(arrayItem.meta_description == null) { arrayItem.meta_description = '' };
 					var category = tag_arr.join(", ");
@@ -3388,8 +3387,7 @@ lunr.QueryParser.parseBoost = function (parser) {
 					filter: "updated_at:>\'" + this.latestPost.replace(/\..*/, "").replace(/T/, " ") + "\'",
 					fields: "id"
 				};
-        var ghost_root_url = "https://difflabs-dev-ghost.cslg1.cslg.net";
-	      var ghost_root = ghost_root_url || "/ghost/api/v2";
+	var ghost_root = ghost_root_url || "/ghost/api/v2";
         var url = ghost_root + "/content/posts/?key=" + ghosthunter_key + "&limit=all&fields=id" + "&filter=" + "updated_at:>\'" + this.latestPost.replace(/\..*/, "").replace(/T/, " ") + "\'";
 
 				var me = this;

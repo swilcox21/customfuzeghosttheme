@@ -108,7 +108,7 @@
             <div style="width:30%; margin-right:15px; ">
                 <h4 style="font-size:1.4rem;">PROJECT TYPE</h4>
                 {{#foreach tags}}
-                    {{^has slug="_project"}}
+                    {{^has slug="hash-project"}}
                         <div style="font-size:1.2rem; line-height:1.4rem;">{{name}}</div>
                     {{/has}}    
                 {{/foreach}}
@@ -136,7 +136,7 @@
     This query gets the latest 3 posts on the site, but adds a filter to
     exclude the post we're currently on from being included. --}}
         <div style="background-color:#f7f3f2; padding:10px; padding-left:100px; padding-right:100px; margin-top:50px;">
-            {{#get "posts" include="tags" filter="id:-{{id}} + tag:_project" limit="3" order="desc" as |more_posts| }}
+            {{#get "pages" include="tags" filter="id:-{{id}} + tag:hash-project" limit="3" order="desc" as |more_posts| }}
                 {{#if more_posts}}
                 <a href="/work/">
                         <h4 style="letter-spacing:2px; margin-left:40px; font-weight:800;"><a href="/work/">PROJECTS</a></h4>

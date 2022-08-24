@@ -15,7 +15,7 @@ into the {body} tag of the default.hbs template --}}
         {{/post}}
     </div>
     <h2 style="text-align:center; margin-bottom:20px; ">Projects</h2>
-    {{#get "posts" include="tags" filter="tag:_project" order="published_at asc"}}
+    {{#get "pages" include="tags" filter="tag:hash-project" order="published_at asc"}}
 
         {{!-- TAG BUTTONS --}}
 
@@ -65,14 +65,14 @@ into the {body} tag of the default.hbs template --}}
         {{!-- PROJECTS FEED --}}
 
         <div style="margin-top:-20px;" class="featured-project-feed inner posts">
-            {{#foreach posts}}
+            {{#foreach pages}}
                 {{#has index="0,1"}}
                     {{> "featured-project-card"}}
                 {{/has}}
             {{/foreach}}
         </div>
         <div class="project-feed inner posts">
-            {{#foreach posts}}
+            {{#foreach pages}}
                 {{^has index="0,1"}}
                     {{> "project-card"}}
                 {{/has}}
