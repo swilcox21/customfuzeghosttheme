@@ -7,12 +7,12 @@ into the {body} of the default.hbs template --}}
         {{#if @custom.show_publication_cover}}
             {{#if @site.cover_image}}
                 <img class="site-header-cover"
-                    srcset="{{img_url feature_image @site.cover_image size="s"}} 300w,
-                            {{img_url feature_image @site.cover_image size="m"}} 600w,
-                            {{img_url feature_image @site.cover_image size="l"}} 1000w,
-                            {{img_url feature_image @site.cover_image size="xl"}} 2000w"
+                    srcset="{{img_url @site.cover_image size="s"}} 300w,
+                            {{img_url @site.cover_image size="m"}} 600w,
+                            {{img_url @site.cover_image size="l"}} 1000w,
+                            {{img_url @site.cover_image size="xl"}} 2000w"
                     sizes="100vw"
-                    src="{{img_url feature_image @site.cover_image size="l"}}"
+                    src="{{img_url @site.cover_image size="l"}}"
                     alt="{{@site.title}}"
                 />
             {{/if}}
@@ -32,9 +32,9 @@ into the {body} of the default.hbs template --}}
                     <div class="home-header">
                         <h6 class="home-header-title">{{title}}</h6>
                         <div class="home-header-content">{{content}}</div>
-                        {{!-- <a href="/about/" class="home-header-aboutButton">
+                        <a href="/about/" class="home-header-aboutButton">
                             ABOUT US
-                        </a> --}}
+                        </a>
                     </div>
                 {{/if}}
             </div>
@@ -105,21 +105,21 @@ into the {body} of the default.hbs template --}}
         <div class="member-feed">
             {{!-- USE THE GET BELOW: if you need to change the order of the members--}}
             {{#get "posts" include="tags" filter="tag:_team-member" }}
-    {{!-- custom "suffle" helper will randomize the list of posts before the foreach loops them --}}
+                {{!-- custom "twitter_url" helper has been modified and will now randomize the list of posts before the foreach loops them --}}
                 {{twitter_url posts}}
                 {{#foreach posts}}
                     {{> "member-card"}}
                 {{/foreach}}
             {{/get}}
         </div>
-        <div class="member-feed">
+        {{!-- <div class="member-feed">
                 {{#get "authors" filter="location:team-member"}}
                     {{#foreach authors}}
                         {{log this}}
                         {{> "member-card"}}
                     {{/foreach}}
                 {{/get}}
-        </div>
+        </div> --}}
 
     
 </main>
