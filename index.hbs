@@ -57,12 +57,12 @@ into the {body} of the default.hbs template --}}
         <div class="featured-project-feed inner posts">
             {{#get "pages" include="tags" filter="featured:true+tag:'hash-project'" order="published_at asc" limit=2}}
                 {{#foreach pages}}
-                    {{> "project-card"}}
+                    {{> "featured-project-card"}}
                 {{/foreach}}
             {{/get}}
         </div>
         <div class="project-feed inner posts">
-            {{#get "pages" include="tags" filter="featured:false+tag:'hash-project'" order="published_at asc" limit=3}}
+            {{#get "pages" include="tags,authors" filter="featured:false+tag:'hash-project'" order="published_at asc" limit=3}}
                 {{#foreach pages}}
                     {{> "project-card"}}
                 {{/foreach}}
@@ -86,7 +86,7 @@ into the {body} of the default.hbs template --}}
                     </div>
                 </div>
                 <div class="post-feed">
-                    {{#get "posts" include="tags" order="published_at desc" filter="tag:-'_project'+tag:-'_team-member'" limit=3}}
+                    {{#get "posts" include="tags,authors" order="published_at desc" filter="tag:-'_team-member'" limit=3}}
                         {{#foreach posts}}
                             {{> "post-card"}}
                         {{/foreach}}
@@ -112,11 +112,14 @@ into the {body} of the default.hbs template --}}
                 {{/foreach}}
             {{/get}}
         </div>
+
+        {{!-- ACTUAL TEAM MEMBERS FEED --}}
+        
         {{!-- <div class="member-feed">
                 {{#get "authors" filter="location:team-member"}}
                     {{#foreach authors}}
                         {{log this}}
-                        {{> "member-card"}}
+                    {{> "member-card"}}
                     {{/foreach}}
                 {{/get}}
         </div> --}}

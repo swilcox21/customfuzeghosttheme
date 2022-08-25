@@ -4,37 +4,21 @@
 into the {body} tag of the default.hbs template --}}
 
 {{#post}}
-        {{!-- <div style="height:15px;margin-left:15%; margin-top:435px; position:absolute; z-index:3; width:70%; border-radius:10px 10px 0px 0px;background:#FF9C55; background:linear-gradient(90deg, #FF9C55 0%, #F5444B 100%); "></div>
-        <div style="margin-left:15%; margin-top:450px; position:absolute; z-index:2; padding:50px; padding-left:8%;padding-right:8%;width:70%; background-color:white;">
-            <div style="margin-bottom:15px; color:gray;">{{date published_at format="MMMM DD, YYYY"}}</div>
-            <h1 style="margin-bottom:15px;">{{title}}</h1>
-            {{#primary_tag}}
-            <div style="margin-bottom:40px; color:gray;">{{name}}</div>
-            {{/primary_tag}}
-            <div style="border-bottom: 1px solid rgb(177, 177, 177); width:100%; margin-bottom:40px;"></div>
-            <div style="padding-bottom:5%;">{{content}}</div>
-        </div> --}}
-
-        {{!-- SHADOW DIV IN ORDER TO FLOAT THE POST ON TOP OF THE FEATURED IMAGE --}}
-        <div style="width:100%;background-color:#f7f3f2; padding-bottom:30px;">
-            <div style="background-image:url('{{img_url feature_image}}'); height:500px; background-size:cover; background-repeat:no-repeat; background-position:bottom;"></div>
-            <div class="post-page-inner">
-                <div style="height:15px; width:100%;margin:auto;margin-top:-90px; position:relative; z-index:2; border-radius:10px 10px 0px 0px;background:#FF9C55; background:linear-gradient(90deg, #FF9C55 0%, #F5444B 100%); "></div>
-                <div style=" position:relative; z-index:2; width:100%;margin:auto;padding:50px; padding-left:8%;padding-right:8%; background-color:white;">
-                    <div style="margin-bottom:15px; color:#515151; font-size:14px;">{{date published_at format="MMMM DD, YYYY"}}</div>
-                    <h1 style="margin-bottom:15px; font-size:42px;">{{title}}</h1>
-                    {{#primary_tag}}
-                    <div style="margin-bottom:40px; color:#515151; font-size:16px;">{{name}}</div>
-                    {{/primary_tag}}
+    <div style="width:100%;background-color:#f7f3f2; padding-bottom:30px;">
+        <div class="post-page-header-image" style="background-image:url('{{img_url feature_image}}'); background-size:cover; background-repeat:no-repeat; background-position:bottom;"></div>
+        <div class="post-page-outer">
+            <div style="height:15px; width:100%;margin:auto; position:relative; z-index:2; border-radius:10px 10px 0px 0px;background:#FF9C55; background:linear-gradient(90deg, #FF9C55 0%, #F5444B 100%); "></div>
+            <div class="post-page-inner" style="">
+                <div class="post-page-pubDate">{{date published_at format="MMMM DD, YYYY"}}</div>
+                <h1 class="post-page-title" >{{title}}</h1>
+                {{#primary_author}}
+                    <div class="post-page-author">{{name}}</div>
+                {{/primary_author}}
+                <div class="post-page-divider" style=""></div>
+                <div class="post-page-content">{{content}}</div>
+                <div style="width:100%; margin-top:35px; margin-bottom:35px; border-bottom:1px solid #E3E3E3;"></div>
+                <div>
                     {{#primary_author}}
-                    <div style="margin-bottom:40px; color:#515151; font-size:16px;">{{name}}</div>
-                    {{/primary_author}}
-                    <div style="width:100%; margin-top:35px; margin-bottom:35px; border-bottom:1px solid #E3E3E3;"></div>
-                    <div style="padding-bottom:-15%;">{{content}}</div>
-                    <div style="width:100%; margin-top:35px; margin-bottom:35px; border-bottom:1px solid #E3E3E3;"></div>
-                    <div>
-                            {{log primary_author}}
-                        {{#primary_author}}
                         <div style="display:flex;">
                             <img src="{{profile_image}}" style="border-radius:50%; width:124px; margin:5px;"/>
                             <div style="margin-top:40px; margin-left:24px;">
@@ -42,23 +26,23 @@ into the {body} tag of the default.hbs template --}}
                                 <div>{{bio}}</div>
                             </div>
                         </div>
-                        {{/primary_author}}
-                    </div>
+                    {{/primary_author}}
                 </div>
             </div>
-            {{#if @custom.show_recent_posts_footer}}
-                <div class="post-page-readmore" style="background-color:#f7f3f2;">
-                    {{#get "posts" include="tags" filter="id:-{{id}} + tag:-'_project' + tag:-'_team-member'" limit="3" as |more_posts| }}
-                        {{#if more_posts}}
-                            <h4 style="letter-spacing:2px;margin-top:50px; font-weight:800;"><a href="/work/">MORE FROM THE TEAM</a></h4>
-                            <div class="blog-page-card-grid">
-                                {{#foreach more_posts}}
-                                    {{> "read-more-card"}}
-                                {{/foreach}}
-                            </div>
-                        {{/if}}
-                    {{/get}}
-                </div> 
-            {{/if}}
         </div>
+        {{#if @custom.show_recent_posts_footer}}
+            <div class="post-page-readmore" style="background-color:#f7f3f2;">
+                {{#get "posts" include="tags" filter="id:-{{id}} + tag:-'_project' + tag:-'_team-member'" limit="3" as |more_posts| }}
+                    {{#if more_posts}}
+                        <h4 style="letter-spacing:2px;margin-top:50px; font-weight:800;"><a href="/work/">MORE FROM THE TEAM</a></h4>
+                        <div class="blog-page-card-grid">
+                            {{#foreach more_posts}}
+                                {{> "read-more-card"}}
+                            {{/foreach}}
+                        </div>
+                    {{/if}}
+                {{/get}}
+            </div> 
+        {{/if}}
+    </div>
 {{/post}}

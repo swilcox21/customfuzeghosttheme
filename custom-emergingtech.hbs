@@ -3,6 +3,18 @@
 {{!-- The tag above means: insert everything in this file
 into the {body} tag of the default.hbs template --}}
 
+{{#post}}
+    <div class="custom-etech-header">
+        <div class="custom-etech-header-inner">
+            <div style="width:40%; display:flex; flex-direction:column; justify-content:center;">
+                <h1 class="custom-etech-title">{{title}}</h1>
+                <div class="custom-etech-excerpt">{{excerpt}}</div>
+            </div>
+            <img class="custom-etech-image"src="{{feature_image}}" />
+        </div>  
+    </div>  
+<div style="text-align:center;">
+    <div class="custom-etech-content">{{content}}</div>
+</div>
 
-<img src="https://raw.githubusercontent.com/swilcox21/GhostFuze/master/Fuze/content/images/2022/07/emerging-tech.png" />
-<div style="margin-bottom:64px;"></div>
+{{/post}}

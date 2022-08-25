@@ -37,22 +37,21 @@ into the {body} tag of the default.hbs template --}}
                 <button class="all-posts-button">DESIGN</button>
             </a>
         </div>
-        <div style="margin-top:-20px;" class="featured-project-feed inner posts">
-            {{#foreach pages}}
-                {{#has index="0,1"}}
-                    {{> "featured-project-card"}}
-                {{/has}}
-                {{!-- {{#if featured}}
-                    {{> "project-card"}}
-                {{/if}} --}}
-            {{/foreach}}
-        </div>
-        <div class="project-feed inner posts">
-            {{#foreach pages}}
-                {{^has index="0,1"}}
-                    {{> "project-card"}}
-                {{/has}}
-            {{/foreach}}
+        <div class="projects-feed-outer">
+            <div style="margin-top:-20px;" class="featured-project-feed inner posts">
+                {{#foreach pages}}
+                    {{#has index="0,1"}}
+                        {{> "featured-project-card"}}
+                    {{/has}}
+                {{/foreach}}
+            </div>
+            <div class="project-feed inner posts">
+                {{#foreach pages}}
+                    {{^has index="0,1"}}
+                        {{> "project-card"}}
+                    {{/has}}
+                {{/foreach}}
+            </div>
         </div>
     {{/get}}
 </div>

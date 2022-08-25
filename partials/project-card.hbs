@@ -37,30 +37,6 @@ which templates loop over to generate a list of posts. --}}
         <br/>
         <a class="post-card-content-link" href="{{url}}">
             <header class="post-card-header">
-            {{#if featured}}
-                <div class="featured-project-card-title">
-                    {{#unless access}}
-                    {{^has visibility="public"}}
-                        {{#unless feature_image}}
-                            {{> "icons/lock"}}
-                        {{/unless}}
-                    {{/has}}
-                    {{/unless}}
-                    {{title}}
-                </div>
-                <div class="featured-project-card-tags">
-                    {{#primary_tag}}
-                        <div>{{name}}</div>
-                    {{/primary_tag}}
-                    {{#foreach tags }}
-                        {{^has slug="_project"}}
-                        {{^has index="0"}}
-                            <div style="margin-left:-12px;">, {{name}}</div>
-                        {{/has}}    
-                        {{/has}}    
-                    {{/foreach}}
-                </div>
-            {{else}}
                 <div class="project-card-title">
                     {{#unless access}}
                     {{^has visibility="public"}}
@@ -88,7 +64,6 @@ which templates loop over to generate a list of posts. --}}
                         <div>{{name}}</div>
                     {{/primary_tag}}
                 </div>
-            {{/if}}
             </header>
         </a>
     </div>
