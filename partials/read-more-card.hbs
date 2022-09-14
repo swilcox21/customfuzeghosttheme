@@ -1,32 +1,37 @@
-{{!-- This is a partial file used to generate a post "card"
-which templates loop over to generate a list of posts. --}}
+{{! This is a partial file used to generate a post "card"
+which templates loop over to generate a list of posts. }}
 
 {{!-- <article style="background-color:white; border-radius:10px;" class="read-more-ani post-card {{post_class}}{{#match @custom.feed_layout "Grid"}}{{#is "home"}}{{#has index="0"}} post-card-large{{/has}}{{#has index="1,2"}} dynamic{{/has}}{{/is}}{{/match}}{{#match @custom.feed_layout "Grid"}} keep-ratio{{/match}}{{#match @custom.feed_layout "Grid"}}{{#is "home, paged"}} post-card-large{{/is}}{{/match}}{{#unless access}} post-access-{{visibility}}{{/unless}}"> --}}
 
- <a href="{{url}}">
-    <div class="blog-page-card">
-        <div style="overflow:hidden; height:60%; border-radius:10px 10px 0px 0px; ">
-        <div style="transform:scale(1.3); 
+<a href="{{url}}">
+  <div class="blog-page-card">
+    <div style="overflow:hidden; height:60%; border-radius:10px 10px 0px 0px; ">
+      <div
+        style="transform:scale(1.3); 
                 background-image:url('{{feature_image}}');
                 background-size:cover;
                 background-repeat:no-repeat;
                 background-position:center; 
                 border-radius:10px 10px 0px 0px; 
                 width:100%; 
-                height:100%;"> 
-        </div>
-        </div>
-        <div style="margin:5%">
-            <div class="blog-page-card-pubDate">
-                    {{date published_at format="MMMM DD, YYYY"}}
-                </div>
-            <h4 class="blog-page-card-title" >
-                {{title}}
-            </h4>
-            {{#primary_tag}}
-                <div class="blog-page-card-author">{{name}}</div>
-            {{/primary_tag}}
-        </div>
+                height:100%;"
+      >
+      </div>
     </div>
-    </a>
-{{!-- </article> --}}
+    <div style="margin:5%">
+      <div class="blog-page-card-pubDate">
+        {{date published_at format="MMMM DD, YYYY"}}
+      </div>
+      <h4 class="blog-page-card-title">
+        {{title}}
+      </h4>
+      {{!-- {{#primary_tag}}
+                <div class="blog-page-card-author">{{name}}</div>
+            {{/primary_tag}} --}}
+      {{#primary_author}}
+        <span class="blog-page-card-author">{{name}}</span>
+      {{/primary_author}}
+    </div>
+  </div>
+</a>
+{{! </article> }}

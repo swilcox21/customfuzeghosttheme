@@ -1,8 +1,8 @@
-{{!-- This is a custom partial file used to generate a MEMBER "card"
-which templates loop over to generate a list of posts. --}}
+{{! This is a custom partial file used to generate a MEMBER "card"
+which templates loop over to generate a list of posts. }}
 
 <article class="member-card">
-    <a  href="{{url}}">
+  {{!-- <a  href="{{url}}">
         <img 
             style="width: 150px; margin:auto;"
             src="{{img_url feature_image}}"
@@ -12,19 +12,18 @@ which templates loop over to generate a list of posts. --}}
         <div class="member-card-title" >{{title}}</div>
         <div class="member-card-excerpt" >{{excerpt}}</div>
 
-    </a>
-
-    {{!-- ACTUAL TEAM MEMBERS PARTIAL --}}
-    
-    {{!-- <a  href="{{url}}">
-        <img 
-            style="width: 150px; margin:auto; border-radius:100%;"
-            src="{{img_url profile_image}}"
-            alt=""
-            loading="lazy"
-        />
-        <div class="member-card-title" >{{name}}</div>
-        <div class="member-card-excerpt" >{{bio}}</div>
     </a> --}}
-</article>
 
+  {{! ACTUAL TEAM MEMBERS PARTIAL }}
+
+  <a href="{{url}}">
+    <img
+      style="width: 150px; margin:auto; border-radius:100%;"
+      src="{{img_url profile_image}}"
+      alt=""
+      loading="lazy"
+    />
+    <div class="member-card-title">{{name}}</div>
+    <div class="member-card-excerpt">{{bio}}</div>
+  </a>
+</article>

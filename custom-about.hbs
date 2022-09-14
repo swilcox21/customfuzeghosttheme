@@ -10,15 +10,23 @@
 </div>
 <div style="text-align:center; font-weight:bold; font-size:15px; letter-spacing:3px; color:#E30F17; margin-top:50px;">DIFFUSION LABS &amp; FRIENDS</div>
 <h1 style="text-align:center; ">The team</h1>
-<div class="member-feed">
-    {{!-- USE THE GET BELOW: if you need to change the order of the members--}}
+{{!-- <div class="member-feed">
     {{#get "posts" include="tags" filter="tag:_team-member" order="published_at desc"}}
         {{twitter_url posts}}
         {{#foreach posts}}
             {{> "member-card"}}
         {{/foreach}}
     {{/get}}
-</div>
+</div> --}}
+        <div class="member-feed">
+            {{#get "authors" filter="location:team-member"}}
+                {{twitter_url authors}}
+                {{#foreach authors}}
+                    {{log this}}
+                {{> "member-card"}}
+                {{/foreach}}
+            {{/get}}
+        </div>
 <div class="custom-about-footer">
     <a href="https://www.csl.com/"class="custom-about-footer-logo">{{content}}</a>
     <div class="custom-about-footer-content">{{content}}</div>

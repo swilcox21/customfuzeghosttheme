@@ -3,6 +3,10 @@
 into the {body} of the default.hbs template --}}
 {{#get "pages" include="tags" filter="tag:'hash-header'"}}
     {{#pages}}
+        {{!-- <div class="pingid-button">AUTHENTICATE</div>
+        <div id='pingid-container' class="pingid-container pingid-show">
+            <div id="pingid"></div>
+        </div>  --}}
     <div class="site-header-content outer{{#match @custom.header_style "Left aligned"}} left-aligned{{/match}}{{#unless @custom.show_publication_cover}}{{#match @custom.header_style "Hidden"}} no-content{{/match}}{{/unless}}">
         {{#if @custom.show_publication_cover}}
             {{#if @site.cover_image}}
@@ -35,6 +39,7 @@ into the {body} of the default.hbs template --}}
                         <a href="/about/" class="home-header-aboutButton">
                             ABOUT US
                         </a>
+                        {{!-- <div class="scroll-test">this is a test div</div> --}}
                     </div>
                 {{/if}}
             </div>
@@ -77,21 +82,21 @@ into the {body} of the default.hbs template --}}
         <div class="blog-container-inner posts" style="z-index:0">
             <br/>
             <br/>
-                <div class="blog-header">
-                    <h1 class="blog-card-h1">From the blog</h1>
-                    <div>
-                        <a style="margin:auto;" href="/blog/">
-                            <button class="all-posts-button-home">ALL POSTS</button>
-                        </a>
-                    </div>
+            <div class="blog-header">
+                <h1 class="blog-card-h1">From the blog</h1>
+                <div>
+                    <a style="margin:auto;" href="/blog/">
+                        <button class="all-posts-button-home">ALL POSTS</button>
+                    </a>
                 </div>
-                <div class="post-feed">
-                    {{#get "posts" include="tags,authors" order="published_at desc" filter="tag:-'_team-member'" limit=3}}
-                        {{#foreach posts}}
-                            {{> "post-card"}}
-                        {{/foreach}}
-                    {{/get}}
-                </div>
+            </div>
+            <div class="post-feed">
+                {{#get "posts" include="tags,authors" order="published_at desc" filter="tag:-'_team-member'" limit=3}}
+                    {{#foreach posts}}
+                        {{> "post-card"}}
+                    {{/foreach}}
+                {{/get}}
+            </div>
             <br/>
             <br/>
             <br/>
@@ -102,27 +107,28 @@ into the {body} of the default.hbs template --}}
     
         <div style="text-align:center; font-weight:bold; font-size:15px; letter-spacing:3px; color:#E30F17; margin-top:50px;">DIFFUSION LABS &amp; FRIENDS</div>
         <h1 style="text-align:center; ">The Team</h1>
-        <div class="member-feed">
+        {{!-- <div class="member-feed"> --}}
             {{!-- USE THE GET BELOW: if you need to change the order of the members--}}
-            {{#get "posts" include="tags" filter="tag:_team-member" }}
+            {{!-- {{#get "posts" include="tags" filter="tag:_team-member" }} --}}
                 {{!-- custom "twitter_url" helper has been modified and will now randomize the list of posts before the foreach loops them --}}
-                {{twitter_url posts}}
+                {{!-- 
                 {{#foreach posts}}
                     {{> "member-card"}}
                 {{/foreach}}
-            {{/get}}
-        </div>
+            {{/get}} --}}
+        {{!-- </div> --}}
 
         {{!-- ACTUAL TEAM MEMBERS FEED --}}
         
-        {{!-- <div class="member-feed">
-                {{#get "authors" filter="location:team-member"}}
-                    {{#foreach authors}}
-                        {{log this}}
-                    {{> "member-card"}}
-                    {{/foreach}}
-                {{/get}}
-        </div> --}}
+        <div class="member-feed">
+            {{#get "authors" filter="location:team-member"}}
+                {{twitter_url authors}}
+                {{#foreach authors}}
+                    {{log this}}
+                {{> "member-card"}}
+                {{/foreach}}
+            {{/get}}
+        </div>
 
     
 </main>

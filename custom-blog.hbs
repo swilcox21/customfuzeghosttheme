@@ -9,7 +9,7 @@
         <img class="blog-page-header-image"src="{{feature_image}}" />
     </div>    
 {{/post}}
-{{#get "posts" include="tags" filter="tag:-'_project'+tag:-'_team-member'"}}
+{{#get "posts" include="tags,authors" filter="tag:-'_project'+tag:-'_team-member'"}}
 <div class="blog-page" style="background-color:#f7f3f2;">
     <div class="blog-page-inner">
         <div class="ghost-hunter-search">
@@ -51,9 +51,12 @@
                             <h2 class="blog-page-card-primary-title">
                                 {{title}}
                             </h2>
-                            {{#primary_tag}}
+                            {{!-- {{#primary_tag}}
                                 <div class="blog-page-card-primary-author">{{name}}</div>
-                            {{/primary_tag}}
+                            {{/primary_tag}} --}}
+                            {{#primary_author}}
+                                <span class="blog-page-card-primary-author">{{name}}</span>
+                            {{/primary_author}}
                         </div>
                     </div>
                 </a>

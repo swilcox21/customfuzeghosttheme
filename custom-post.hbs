@@ -32,7 +32,7 @@ into the {body} tag of the default.hbs template --}}
         </div>
         {{#if @custom.show_recent_posts_footer}}
             <div class="post-page-readmore" style="background-color:#f7f3f2;">
-                {{#get "posts" include="tags" filter="id:-{{id}} + tag:-'_project' + tag:-'_team-member'" limit="3" as |more_posts| }}
+                {{#get "posts" include="tags,authors" filter="id:-{{id}} + tag:-'_project' + tag:-'_team-member'" limit="3" as |more_posts| }}
                     {{#if more_posts}}
                         <h4 style="letter-spacing:2px;margin-top:50px; font-weight:800;"><a href="/work/">MORE FROM THE TEAM</a></h4>
                         <div class="blog-page-card-grid">

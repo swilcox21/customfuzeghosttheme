@@ -1,0 +1,40 @@
+.pingidContainer {
+    text-align: center;
+    position: relative;
+    z-index: 1000;
+    height:200vh;
+    margin: 5px;
+    border-radius: 10px;
+}
+.pingidTest {
+    margin: 20px;
+}
+.pingidFooter {
+    padding: 20px;
+    background-color: black;
+    color: white;
+}
+
+// ANIMATION
+.spinner-container {
+    display: flex;
+    margin: auto;
+    width: 300px;
+    height: 120px;
+    align-items: baseline;
+}
+.spinner-start {
+    margin-left:0px;
+    min-height: 102px;
+    max-width: 93px;
+}
+.spinner-middle {
+    margin: auto;
+    min-height: 102px;
+    max-width: 93px;
+}
+.spinner-end {
+    margin-left:70%;
+    min-height: 102px;
+    max-width: 93px;
+}
